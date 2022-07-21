@@ -49,5 +49,11 @@ export default new Vuex.Store({
             commit('COMPLETE_TODO', todo)
         },
 
+    },
+    getters: {
+        newTodo: state => state.newTodo,
+        todos: state => state.todos.filter((todo) => { return !todo.completed }),
+        completedTodos: state => state.todos.filter((todo) => { return todo.completed })
     }
+
 })
