@@ -56,6 +56,8 @@ export default {
   data: () => ({
     //
   }),
-  
+  beforeMount() {
+    this.$store.commit('initialiseVars')
+}, 
 };
 </script>

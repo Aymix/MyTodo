@@ -24,7 +24,11 @@ export default {
         CompletedTasks
     },
 
-  
+    watch: {
+      '$store.state.todos': function() {
+     localStorage.setItem('todos', JSON.stringify(this.$store.state.todos));
+  }
+  }
 }
 
 </script>

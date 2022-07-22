@@ -9,7 +9,12 @@ export default new Vuex.Store({
         newTodo: ''
     },
     mutations: {
-       
+        initialiseVars(state) {
+            if (localStorage.getItem('todos')) {
+                state.todos = JSON.parse(localStorage.todos)
+            }
+                
+        },
         GET_TODO(state, todo) {
             state.newTodo = todo
         },
@@ -18,6 +23,7 @@ export default new Vuex.Store({
                 body: state.newTodo,
                 completed: false
             })
+           
         },
         EDIT_TODO(state, todo) {
             var todos = state.todos
@@ -28,18 +34,11 @@ export default new Vuex.Store({
         REMOVE_TODO(state, todo) {
             var todos = state.todos
             todos.splice(todos.indexOf(todo), 1)
+           
         },
         COMPLETE_TODO(state, todo) {
             todo.completed = !todo.completed
         },
-    },
-
-    watch: {
-        'state.todos': function() {
-            console.log('ddd');
-        }
-        
-
     },
 
     actions: {
