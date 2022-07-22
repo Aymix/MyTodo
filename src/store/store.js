@@ -9,6 +9,7 @@ export default new Vuex.Store({
         newTodo: ''
     },
     mutations: {
+       
         GET_TODO(state, todo) {
             state.newTodo = todo
         },
@@ -32,6 +33,15 @@ export default new Vuex.Store({
             todo.completed = !todo.completed
         },
     },
+
+    watch: {
+        'state.todos': function() {
+            console.log('ddd');
+        }
+        
+
+    },
+
     actions: {
         getTodo({ commit }, todo) {
             commit('GET_TODO', todo)
